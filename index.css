@@ -1,0 +1,43 @@
+body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); background-size: cover; color: #f9f9f5; padding: 60px; height: 100vh;}
+
+.navbar { background-color: #121c2d;box-shadow: 0 2px 10px rgba(0, 229, 255, 0.1);}
+
+.sidebar { position: fixed; top: 56px; left: 0; height: 100%; width: 220px; background-color: #18273a;padding-top: 20px;;}
+
+.sidebar.active { transform: translateX(0);}
+
+.btn-custom { background: linear-gradient(90deg, #00e5ff, #80deea);color: #0f2027;font-weight: bold;}
+
+.btn-custom:hover {transform: scale(1.03); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);}
+
+.task-card {background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(0, 229, 255, 0.15); border-radius: 15px; }
+
+.task-card:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);}
+
+.priority-medium {background-color: #ff9800;} .priority-high { background-color: #f44336;}
+Task 3: Functionality (JavaScript)
+
+●	addTask() – Adds a task with a prompt for priority
+●	filterTasks(category) – Filters tasks based on sidebar click
+●	Uses localStorage to persist data even after reload
+
+const allTasks = JSON.parse(localStorage.getItem('allTasks')) || []; localStorage.setItem('allTasks', JSON.stringify(allTasks));} function setReminder(task) {
+setTimeout(() => {
+
+function addTask() { const taskInput = document.getElementById('taskInput'); const taskText = taskInput.value.trim();
+
+if (!taskText) return; trashed: false,
+}; allTasks.push(task); taskInput.value = '';f ilterTasks(currentFilter);} function filterTasks(category) {
+currentFilter = category;
+
+const taskList = document.getElementById('taskList'); filteredTasks = allTasks.filter(task => task.trashed);
+} else if (category === 'remainders') {
+filteredTasks = allTasks.filter(task => !task.completed && !task.trashed); } filteredTasks.forEach(task => { const taskCard = document.createElement('div'); task.completed =
+!task.completed;
+
+filterTasks(currentFilter); saveTasks();};
+
+const delBtn = document.createElement('button'); delBtn.className = 'icon-btn';
+filterTasks(currentFilter); saveTasks();
+
+};buttonGroup.appendChild(checkBtn); buttonGroup.appendChild(delBtn); taskList.appendChild(taskCard); });}
